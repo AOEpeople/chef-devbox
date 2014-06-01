@@ -1,0 +1,12 @@
+[submodule "cookbooks/jenkins"]
+	path = cookbooks/jenkins
+	url = https://github.com/opscode-cookbooks/jenkins
+[submodule "cookbooks/apt"]
+	path = cookbooks/apt
+	url = https://github.com/opscode-cookbooks/apt
+[submodule "cookbooks/runit"]
+	path = cookbooks/runit
+	url = https://github.com/opscode-cookbooks/runit
+[submodule "cookbooks/yum"]
+	path = cookbooks/yum
+	url = https://github.com/opscode-cookbooks/yum
