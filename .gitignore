@@ -1,2 +1,4 @@
 chef-client-running.pid
 chef-stacktrace.out
+/cookbooks/
+Berksfile.lock

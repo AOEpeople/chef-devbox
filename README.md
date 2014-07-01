@@ -8,6 +8,6 @@ curl -L https://www.opscode.com/chef/install.sh | sudo bash
 git clone git@github.com:fbrnc/integrationserver.git ~/chef
 sudo /opt/chef/embedded/bin/gem install berkshelf --no-ri --no-rdoc
 sudo ln -s /opt/chef/embedded/bin/berks /usr/local/bin/berks
-cd ~/chef && berks install --path ~/chef/cookbooks
+cd ~/chef && berks vendor ~/chef/cookbooks
 sudo /opt/chef/bin/chef-solo -c ~/chef/solo.rb -j ~/chef/solo.json
 ```
