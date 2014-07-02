@@ -16,4 +16,4 @@ fi
 
 rm -rf /etc/chef-devbox/cookbooks
 cd /etc/chef-devbox && berks vendor /etc/chef-devbox/cookbooks || { echo "Installing berkshelf depenencies failed"; exit 1; }
-sudo /opt/chef/bin/chef-solo -c /etc/chef/solo.rb -j /etc/chef-devbox/solo.json || { echo "Chef provsioning failed"; exit 1; }
+sudo /opt/chef/bin/chef-solo -c /etc/chef/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
