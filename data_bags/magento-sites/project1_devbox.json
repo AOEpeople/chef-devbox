@@ -1,5 +1,8 @@
 {
     "id": "project1_devbox",
     "project": "project1",
-    "environment": "devbox"
+    "environment": "devbox",
+    "server_name": "www.project1.local",
+    "server_aliases": ["backend.project1.local"],
+    "databases": [ "project1", "project1_test" ]
 }

@@ -9,6 +9,7 @@
 Chef::Log.info("Recipe devbox::default")
 
 include_recipe "apache2"
+include_recipe 'database::mysql'
 include_recipe "mysql::client"
 include_recipe "mysql::server"
 include_recipe "php"
@@ -27,11 +28,19 @@ sites.each do |site|
 
   Chef::Log.info("Found Magento site #{opts["id"]}")
 
-  directory "/var/www/#{opts["project"]}/#{opts["environment"]}" do
-    owner "www-data"
-    group "www-data"
-    recursive true
-    mode 0664
-    action :create
+  devbox_magento_vhost "#{opts["project"]}_#{opts["environment"]}" do
+    project opts["project"]
+    environment opts["environment"]
+    server_name opts["server_name"]
   end
+
+  devbox_systemstorage "#{opts["project"]}_#{opts["environment"]}" do
+    project opts["project"]
+    environment opts["environment"]
+  end
+
+  opts["databases"].each do |dbname|
+    devbox_magento_db dbname
+  end
+
 end
