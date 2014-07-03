@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# apt-get -y update
-# apt-get -y install build-essential ruby-dev git curl build-essential libxml2-dev libxslt-dev libssl-dev
-
+# Assuming all packages were installed if build-essential is present. Might be a wrong assumption
+if [ `dpkg-query -W -f='${Status}' build-essential 2>/dev/null | grep -c "ok installed"` -eq 0 ]; then
+    apt-get -y update
+    apt-get -y install build-essential ruby-dev git curl build-essential libxml2-dev libxslt-dev libssl-dev
+fi
 if [ ! -e /opt/chef/bin/chef-solo ] ; then
     curl -L https://www.opscode.com/chef/install.sh | bash
 fi
@@ -26,4 +28,4 @@ echo
 echo "Running Chef..."
 echo "---------------"
 echo
-sudo /opt/chef/bin/chef-solo -c /etc/chef-devbox/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
+/opt/chef/bin/chef-solo -c /etc/chef-devbox/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
