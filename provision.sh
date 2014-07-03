@@ -14,6 +14,16 @@ if [ ! -d /etc/chef-devbox ] ; then
     git clone -b devbox https://github.com/fbrnc/integrationserver.git /etc/chef-devbox || { echo "Cloning failed"; exit 1; }
 fi
 
+echo
+echo "Fetching dependencies via Berkshelf..."
+echo "--------------------------------------"
+echo
+
 rm -rf /etc/chef-devbox/cookbooks
 cd /etc/chef-devbox && berks vendor /etc/chef-devbox/cookbooks || { echo "Installing berkshelf depenencies failed"; exit 1; }
-sudo /opt/chef/bin/chef-solo -c /etc/chef/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
+
+echo
+echo "Running Chef..."
+echo "---------------"
+echo
+sudo /opt/chef/bin/chef-solo -c /etc/chef-devbox/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
