@@ -8,6 +8,8 @@
 #
 Chef::Log.info("Recipe devbox::default")
 
+node.default['apache']['version'] = '2.4'
+
 include_recipe "apache2"
 include_recipe 'database::mysql'
 include_recipe "mysql::client"
