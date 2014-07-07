@@ -11,7 +11,6 @@ Chef::Log.info("Recipe devbox::default")
 node.default['apache']['version'] = '2.4'
 
 include_recipe "apache2"
-include_recipe 'database::mysql'
 include_recipe "mysql::client"
 include_recipe "mysql::server"
 include_recipe "php"
@@ -42,7 +41,7 @@ sites.each do |site|
   end
 
   opts["databases"].each do |dbname|
-    devbox_magento_db dbname
+    # devbox_magento_db dbname
   end
 
 end
