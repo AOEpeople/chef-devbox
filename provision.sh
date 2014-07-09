@@ -28,4 +28,4 @@ echo
 echo "Running Chef..."
 echo "---------------"
 echo
-/opt/chef/bin/chef-solo -c /etc/chef-devbox/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
+# /opt/chef/bin/chef-solo -c /etc/chef-devbox/solo.rb -j /etc/chef-devbox/solo.json -l info || { echo "Chef provsioning failed"; exit 1; }
