@@ -8,12 +8,14 @@ if [ ! -d /etc/chef-devbox ] ; then
     git clone -b jenkins https://github.com/fbrnc/integrationserver.git /etc/chef-devbox || { echo "Cloning failed"; exit 1; }
 fi
 
-echo
-echo "Installing ChefDK (includes Berkshelf)..."
-echo "-----------------------------------------"
-echo
-wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.10/x86_64/chefdk_0.1.0-1_amd64.deb -O /tmp/chefdk_0.1.0-1_amd64.deb || { echo "Downloading ChefDK package failed"; exit 1; }
-dpkg -i /tmp/chefdk_0.1.0-1_amd64.deb || { echo "Installing ChefDK failed"; exit 1; }
+if [ ! -f /opt/chefdk/bin/chef ] ; then
+    echo
+    echo "Installing ChefDK (includes Berkshelf)..."
+    echo "-----------------------------------------"
+    echo
+    wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.10/x86_64/chefdk_0.1.0-1_amd64.deb -O /tmp/chefdk_0.1.0-1_amd64.deb || { echo "Downloading ChefDK package failed"; exit 1; }
+    dpkg -i /tmp/chefdk_0.1.0-1_amd64.deb || { echo "Installing ChefDK failed"; exit 1; }
+fi
 
 echo
 echo "Fetching dependencies via Berkshelf..."
