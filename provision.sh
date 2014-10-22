@@ -13,8 +13,8 @@ if [ ! -f /opt/chefdk/bin/chef ] ; then
     echo "Installing ChefDK (includes Berkshelf)..."
     echo "-----------------------------------------"
     echo
-    wget https://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/13.10/x86_64/chefdk_0.1.0-1_amd64.deb -O /tmp/chefdk_0.1.0-1_amd64.deb || { echo "Downloading ChefDK package failed"; exit 1; }
-    dpkg -i /tmp/chefdk_0.1.0-1_amd64.deb || { echo "Installing ChefDK failed"; exit 1; }
+    wget http://opscode-omnibus-packages.s3.amazonaws.com/ubuntu/12.04/x86_64/chefdk_0.3.0-1_amd64.deb -O /tmp/chefdk_0.3.0-1_amd64.deb || { echo "Downloading ChefDK package failed"; exit 1; }
+    dpkg -i /tmp/chefdk_0.3.0-1_amd64.deb || { echo "Installing ChefDK failed"; exit 1; }
 fi
 
 echo
