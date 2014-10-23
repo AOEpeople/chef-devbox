@@ -2,3 +2,6 @@ chef-client-running.pid
 chef-stacktrace.out
 /cookbooks/
 Berksfile.lock
+jenkins-ci.org.key
+remote_file/
+data_bags/magento-sites/ibis_integration.json
