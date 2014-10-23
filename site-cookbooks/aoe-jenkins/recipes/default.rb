@@ -25,7 +25,7 @@ jenkinsplugins = %w(
   build-user-vars-plugin
 )
 jenkinsplugins.each do |name|
- jenkins_plugin name
+  jenkins_plugin name
 end
 
 cookbook_file "/var/lib/jenkins/jenkins_backup.sh" do
