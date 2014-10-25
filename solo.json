@@ -1,7 +1,6 @@
 {
-    "run_list": [ "recipe[devbox]" ],
+    "run_list": [ "recipe[devbox::default]" ],
     "devbox": {
         "main_user": "vagrant"
     }
 }
-

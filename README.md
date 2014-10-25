@@ -65,7 +65,7 @@ Before provisioning (running Chef Solo) you need to
 By default solo.json contains following run list which will provision a devbox and install all configured web projects:
 ```
 {
-    "run_list": [ "recipe[devbox]" ],
+    "run_list": [ "recipe[devbox::default]" ],
     "devbox": {
         "main_user": "vagrant"
     }
