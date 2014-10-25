@@ -1,4 +1,7 @@
 {
-    "run_list": [ "recipe[aoe-jenkins::default]" ]
+    "run_list": [ "recipe[devbox]" ],
+    "devbox": {
+        "main_user": "vagrant"
+    }
 }
 
