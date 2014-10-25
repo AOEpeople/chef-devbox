@@ -6,7 +6,7 @@ if ! hash git 2>/dev/null; then
 fi
 
 if [ ! -d /etc/chef-devbox ] ; then
-    git clone -b jenkins https://github.com/fbrnc/integrationserver.git /etc/chef-devbox || { echo >&2 "Cloning failed"; exit 1; }
+    git clone https://github.com/aoepeople/chef-devbox.git /etc/chef-devbox || { echo >&2 "Cloning failed"; exit 1; }
 fi
 
 if [ ! -f /opt/chefdk/bin/chef ] ; then

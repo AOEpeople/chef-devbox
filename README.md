@@ -17,6 +17,8 @@ Since this should be as portable as possible (and since dealing with Ruby, Chef 
 Windows hosts) this solution abstracts completely from provisioning the actual server. It assumes there's already a vanilla Ubuntu
 server up and running.
 
+### Provisioning the 'box'
+
 Using Vagrant and VirtualBox you can simply start any Ubuntu 14.04 image without further provisioning. This is what I like to do:
 
 ```
@@ -37,9 +39,9 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-## Initial Setup
-
 On EC2 I just start a regular EC2 instance with the default Ubuntu 14.04 image.
+
+## Initial Setup
 
 After logging you just run this line that takes care of
 * downloading the basic provisioning script that
@@ -49,14 +51,13 @@ After logging you just run this line that takes care of
 ** fetches all the configured cookbook dependencies
 
 ```Shell
-# Run as root:
-curl https://raw.githubusercontent.com/fbrnc/integrationserver/jenkins/provision.sh | sudo bash
+curl https://raw.githubusercontent.com/AOEpeople/chef-devbox/master/setup.sh | sudo bash
 ```
 
 ### Configuration
 
-Before provisioning you need to
-* configure the run list (and maybe the user)
+Before provisioning (running Chef Solo) you need to
+* configure the run list (and maybe the user) unless you want to create a simple devbox without Jenkins or Samba
 * configure the web projects
 
 #### Run lists
