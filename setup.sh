@@ -31,4 +31,4 @@ cd /etc/chef-devbox && berks vendor /etc/chef-devbox/cookbooks || { echo >&2 "In
 #echo "Running Chef..."
 #echo "---------------"
 #echo
-#cd /etc/chef-devbox && chef-solo -c solo.rb -j solo.json -l info || { echo >&2 "Chef provsioning failed"; exit 1; }
+#cd /etc/chef-devbox && chef-solo -c solo.rb -j solo.json || { echo >&2 "Chef provsioning failed"; exit 1; }
