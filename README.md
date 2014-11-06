@@ -65,7 +65,7 @@ Before provisioning (running Chef Solo) you need to
 By default solo.json contains following run list which will provision a devbox and install all configured web projects:
 ```
 {
-    "run_list": [ "recipe[devbox::default]" ],
+    "run_list": [ "recipe[devbox::default]", "recipe[devbox::motd]", "recipe[devbox::hostsfile]" ],
     "devbox": {
         "main_user": "vagrant"
     }
@@ -78,7 +78,7 @@ If you like using Samba to access the files in the devbox from your host (I do) 
 configuring Samba to expose /var/www:
 ```
 {
-    "run_list": [ "recipe[devbox::default]", "recipe[devbox::samba]" ],
+    "run_list": [ "recipe[devbox::default]", "recipe[devbox::motd]", "recipe[devbox::hostsfile]", "recipe[devbox::samba]" ],
     "devbox": {
         "main_user": "vagrant"
     }
