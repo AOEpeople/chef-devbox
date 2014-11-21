@@ -22,9 +22,9 @@ echo
 echo "Fetching dependencies via Berkshelf..."
 echo "--------------------------------------"
 echo
-rm /etc/chef-devbox/Berksfile.lock
-rm -rf ~/.berkshelf
-rm -rf /etc/chef-devbox/cookbooks
+if [ -f /etc/chef-devbox/Berksfile.lock ] ; then rm /etc/chef-devbox/Berksfile.lock; fi
+if [ -d ~/.berkshelf ] ; then rm -rf ~/.berkshelf; fi
+if [ -d /etc/chef-devbox/cookbooks ] ; then rm -rf /etc/chef-devbox/cookbooks; fi
 cd /etc/chef-devbox && berks vendor /etc/chef-devbox/cookbooks || { echo >&2 "Installing berkshelf depenencies failed"; exit 1; }
 
 #echo
