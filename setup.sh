@@ -1,15 +1,22 @@
 #!/bin/bash
 
+if [ "$(id -u)" != "0" ]; then
+    echo "Please run this script as root"
+    exit 1
+fi
+
 if ! hash git 2>/dev/null; then
     apt-get -y update
     apt-get -y install git
 fi
 
-if [ ! -d /etc/chef-devbox ] ; then
+if [ ! -d /etc/chef-devbox ] || [ ! -f /etc/chef-devbox/Berksfile ] ; then
     git clone https://github.com/aoepeople/chef-devbox.git /etc/chef-devbox || { echo >&2 "Cloning failed"; exit 1; }
+else 
+    cd /etc/chef-devbox && git pull
 fi
 
-if [ ! -f /opt/chefdk/bin/chef ] ; then
+if [ ! -f /opt/chefdk/bin/chef ] || [ "$(/opt/chefdk/bin/chef --version)" != "Chef Development Kit Version: 0.3.5" ] ; then
     echo
     echo "Installing ChefDK (includes Berkshelf)..."
     echo "-----------------------------------------"
