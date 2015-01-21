@@ -4,4 +4,4 @@ chef-stacktrace.out
 Berksfile.lock
 jenkins-ci.org.key
 remote_file/
-data_bags/magento-sites/ibis_integration.json
+data_bags/magento-sites/*
