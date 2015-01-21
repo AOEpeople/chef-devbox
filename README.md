@@ -127,6 +127,5 @@ Having everything prepared is already doing all the ugly work and downloading an
 After configuring the run list and creating the project configuration (or after adding new projects) run chef:
 
 ```Shell
-sudo su
-cd /etc/chef-devbox && chef-solo -c solo.rb -j solo.json -l info
+sudo /etc/chef-devbox/provision.sh
 ```
