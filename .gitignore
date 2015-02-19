@@ -4,4 +4,5 @@ chef-stacktrace.out
 Berksfile.lock
 jenkins-ci.org.key
 remote_file/
-data_bags/magento-sites/*
+data_bags/magento-sites/*.json
+.vagrant/

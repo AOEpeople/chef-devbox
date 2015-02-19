@@ -1,0 +1,30 @@
+{
+    "id": "demo_devbox",
+    "project": "demo",
+    "environment": "devbox",
+    "server_name": "www.demo.local",
+    "server_aliases": ["backend.demo.local"],
+    "databases": [ "demo", "demotest" ],
+    "prepare_systemstorages": [ "production" ],
+    "deploy_scripts": "https://github.com/AOEpeople/magento-deployscripts.git",
+    "awscli": {
+        "demo-builds": {
+            "region": "us-west-2",
+            "aws_access_key_id": "...",
+            "aws_secret_access_key": "..."
+        },
+        "demo-systemstorage": {
+            "region": "us-west-2",
+            "aws_access_key_id": "...",
+            "aws_secret_access_key": "..."
+        }
+    },
+    "motd": [
+        "Demo",
+        "====",
+        "    # Update system storage:",
+        "aws --profile demo-systemstorage s3 cp --recursive s3://my_systemstorage/demo/backup/production ~systemstorage/systemstorage/demo/backup/production",
+        "    # Install build (incl. extra package):",
+        "B=1880; ~systemstorage/systemstorage/demo/bin/deploy/deploy.sh -d -e devbox -r s3://my_jenkins_server/jobs/demo_build/$B/demo.tar.gz -t /var/www/demo/devbox/ -a demo-builds"
+    ]
+}
