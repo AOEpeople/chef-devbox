@@ -22,6 +22,7 @@
     "motd": [
         "Demo",
         "====",
+		"Please enter your update/install instructions here. The following content is an example for a Jenkins CI pipeline that uses S3...",
         "    # Update system storage:",
         "aws --profile demo-systemstorage s3 cp --recursive s3://my_systemstorage/demo/backup/production ~systemstorage/systemstorage/demo/backup/production",
         "    # Install build (incl. extra package):",
