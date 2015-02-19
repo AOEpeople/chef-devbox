@@ -17,6 +17,15 @@ Since this should be as portable as possible (and since dealing with Ruby, Chef 
 Windows hosts) this solution abstracts completely from provisioning the actual server. It assumes there's already a vanilla Ubuntu
 server up and running.
 
+### In a hurry? Here's the quick run:
+
+* Install Virtualbox and Vagrant if you haven't already
+* Create a project directory on your host system (e.g. "demo") and 'cd' into it
+* Download this file https://raw.githubusercontent.com/AOEpeople/chef-devbox/master/Vagrantfile
+* run `vagrant up`
+* Create some project json files in /etc/chef-devbox/data_bags/magento-sites/
+* Reprovision: `sudo /etc/chef-devbox/provision.sh`
+
 ### Provisioning the 'box'
 
 Using Vagrant and VirtualBox you can simply start any Ubuntu 14.04 image without further provisioning. This is what I like to do:
@@ -40,6 +49,8 @@ end
 ```
 
 On EC2 I just start a regular EC2 instance with the default Ubuntu 14.04 image.
+
+Alternatively you can just download this [Vagrantfile](https://raw.githubusercontent.com/AOEpeople/chef-devbox/master/Vagrantfile) that will automatically trigger the setup script. 
 
 ## Initial Setup
 
@@ -74,16 +85,16 @@ By default solo.json contains following run list which will provision a devbox a
 The default main user (the user you'll use to work with) is 'ububtu' which is fine for EC2 instances. Your devbox will most likely be a vagrant box. So check
 if the main_user is configured to be 'vagrant'. 
 
-If you like using Samba to access the files in the devbox from your host (I do) you can add another recipe to the runlist that will take care of installing and
+If you like using Samba to access the files in the devbox from your host (I do) you can add run an additional runlist that will take care of installing and
 configuring Samba to expose /var/www:
 ```
 {
-    "run_list": [ "recipe[devbox::default]", "recipe[devbox::motd]", "recipe[devbox::hostsfile]", "recipe[devbox::samba]" ],
-    "devbox": {
-        "main_user": "vagrant"
-    }
+    "run_list": [ "recipe[ "recipe[devbox::samba]" ]
 }
 ```
+
+Simply run this: `sudo cd /etc/chef-devbox && sudo chef-solo -c solo.rb -j solo.samba.json`
+
 
 If you want a Jenkins server to be installed in addition to the web projects check solo.jenkins.json and change solo.json to contain this
 ```
@@ -110,17 +121,8 @@ Having everything prepared is already doing all the ugly work and downloading an
 
 #### JSON file format
 
-```
-{
-    "id": "myproject_environment",
-    "project": "myproject",
-    "environment": "environment",
-    "server_name": "www.myproject.local",
-    "server_aliases": ["backend.myproject.local"],
-    "databases": [ "myproject", "myprojecttest" ],
-    "prepare_systemstorages": [ "deploy", "production", "staging"]
-}
-```
+Check out the example file in this repo:
+https://github.com/AOEpeople/chef-devbox/blob/master/data_bags/magento-sites/demo_devbox.json.example
 
 ### Provisioning
 
