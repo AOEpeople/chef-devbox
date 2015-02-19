@@ -38,7 +38,7 @@ echo
 echo "Running Chef..."
 echo "---------------"
 echo
-cd /etc/chef-devbox/provision.sh || { echo >&2 "Chef provisioning failed"; exit 1; }
+/etc/chef-devbox/provision.sh || { echo >&2 "Chef provisioning failed"; exit 1; }
 
 echo ""
 echo "What's next?"
