@@ -1,3 +1,6 @@
 {
-    "run_list": [ "recipe[devbox::samba]" ]
+    "run_list": [ "recipe[devbox::samba]" ],
+    "devbox": {
+        "main_user": "vagrant"
+    }
 }
