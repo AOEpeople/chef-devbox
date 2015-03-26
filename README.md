@@ -17,6 +17,10 @@ Since this should be as portable as possible (and since dealing with Ruby, Chef 
 Windows hosts) this solution abstracts completely from provisioning the actual server. It assumes there's already a vanilla Ubuntu
 server up and running.
 
+## Screencast
+
+https://youtu.be/MsPedp5v1Yo
+
 ### In a hurry? Here's the quick run:
 
 * Install Virtualbox and Vagrant if you haven't already
