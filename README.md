@@ -55,11 +55,12 @@ Alternatively you can just download this [Vagrantfile](https://raw.githubusercon
 ## Initial Setup
 
 After logging you just run this line that takes care of
+
 * downloading the basic provisioning script that
-** installs git
-** clones the rest of this repository
-** installs ChefDK that comes with Berkshelf and all required dependencies (and doesn't take forever to install)
-** fetches all the configured cookbook dependencies
+  * installs git
+  * clones the rest of this repository
+  * installs ChefDK that comes with Berkshelf and all required dependencies (and doesn't take forever to install)
+  * fetches all the configured cookbook dependencies
 
 ```Shell
 curl https://raw.githubusercontent.com/AOEpeople/chef-devbox/master/setup.sh | sudo bash
@@ -82,14 +83,14 @@ By default solo.json contains following run list which will provision a devbox a
     }
 }
 ```
-The default main user (the user you'll use to work with) is 'ububtu' which is fine for EC2 instances. Your devbox will most likely be a vagrant box. So check
+The default main user (the user you'll use to work with) is 'ubuntu' which is fine for EC2 instances. Your devbox will most likely be a vagrant box. So check
 if the main_user is configured to be 'vagrant'. 
 
 If you like using Samba to access the files in the devbox from your host (I do) you can add run an additional runlist that will take care of installing and
 configuring Samba to expose /var/www:
 ```
 {
-    "run_list": [ "recipe[ "recipe[devbox::samba]" ]
+    "run_list": [ "recipe[devbox::samba]" ]
 }
 ```
 
