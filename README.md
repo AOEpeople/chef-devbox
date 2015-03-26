@@ -17,7 +17,7 @@ Since this should be as portable as possible (and since dealing with Ruby, Chef 
 Windows hosts) this solution abstracts completely from provisioning the actual server. It assumes there's already a vanilla Ubuntu
 server up and running.
 
-## Screencast
+### Screencast
 
 https://youtu.be/MsPedp5v1Yo
 
